@@ -85,6 +85,8 @@ describe("Basic user flow for Website", () => {
     const buttonText = await button.getProperty("innerText");
     const buttonTextValue = await buttonText.jsonValue();
     expect(buttonTextValue).toBe("Remove from Cart");
+
+    await button.click();
   }, 2500);
 
   // Check to make sure that after clicking "Add to Cart" on every <product-item> that the Cart
@@ -109,7 +111,7 @@ describe("Basic user flow for Website", () => {
     const cartCountValue = await cartCount.getProperty("innerText");
     const count = await cartCountValue.jsonValue();
 
-    expect(count).toBe(20);
+    expect(parseInt(count)).toBe(20);
   }, 15000); // Increased timeout to 15 seconds
 
   // Check to make sure that after you reload the page it remembers all of the items in your cart
